@@ -8,7 +8,7 @@ const rulesData = [
     id: 1,
     category: "Орфография",
     icon: "BookOpen",
-    color: "bg-blue-950",
+    color: "bg-sky-400",
     topics: [
       {
         title: "Правописание безударных гласных в корне",
@@ -31,7 +31,7 @@ const rulesData = [
     id: 2,
     category: "Пунктуация",
     icon: "AlignLeft",
-    color: "bg-slate-800",
+    color: "bg-teal-400",
     topics: [
       {
         title: "Запятая при однородных членах",
@@ -54,7 +54,7 @@ const rulesData = [
     id: 3,
     category: "Грамматика",
     icon: "GraduationCap",
-    color: "bg-zinc-800",
+    color: "bg-blue-300",
     topics: [
       {
         title: "Части речи и их признаки",
@@ -77,7 +77,7 @@ const rulesData = [
     id: 4,
     category: "Стилистика",
     icon: "Feather",
-    color: "bg-stone-800",
+    color: "bg-cyan-400",
     topics: [
       {
         title: "Стили речи",
@@ -151,28 +151,28 @@ export default function Index() {
       {page === "home" && (
         <main>
           {/* Hero */}
-          <section className="bg-primary text-primary-foreground py-24 relative overflow-hidden">
-            <div className="absolute inset-0 opacity-5 pointer-events-none">
-              <div className="absolute top-4 left-8 font-display text-[200px] leading-none text-white select-none">Я</div>
-              <div className="absolute bottom-4 right-8 font-display text-[200px] leading-none text-white select-none">Ъ</div>
+          <section className="bg-sky-100 py-24 relative overflow-hidden border-b border-sky-200">
+            <div className="absolute inset-0 opacity-10 pointer-events-none">
+              <div className="absolute top-4 left-8 font-display text-[200px] leading-none text-sky-400 select-none">Я</div>
+              <div className="absolute bottom-4 right-8 font-display text-[200px] leading-none text-sky-400 select-none">Ъ</div>
             </div>
             <div className="max-w-6xl mx-auto px-6 relative z-10">
               <div className="max-w-2xl animate-slide-up">
-                <div className="inline-flex items-center gap-2 border border-white/20 px-3 py-1 mb-8 text-xs tracking-widest uppercase text-white/60 font-body">
+                <div className="inline-flex items-center gap-2 border border-sky-300 px-3 py-1 mb-8 text-xs tracking-widest uppercase text-sky-500 font-body">
                   <Icon name="GraduationCap" size={12} />
                   Подготовка к экзамену
                 </div>
-                <h1 className="font-display text-6xl font-semibold leading-tight mb-6 text-white">
+                <h1 className="font-display text-6xl font-semibold leading-tight mb-6 text-sky-800">
                   Русский язык.<br />
-                  <span className="text-amber-300">Чёткие правила.</span>
+                  <span className="text-teal-500">Чёткие правила.</span>
                 </h1>
-                <p className="font-body text-white/70 text-lg leading-relaxed mb-10 font-light">
+                <p className="font-body text-sky-700/80 text-lg leading-relaxed mb-10 font-light">
                   Подробные объяснения правил орфографии, пунктуации и грамматики.
                   Всё необходимое для уверенной подготовки к ЕГЭ и ОГЭ.
                 </p>
                 <button
                   onClick={() => setPage("materials")}
-                  className="inline-flex items-center gap-3 bg-amber-400 text-stone-900 px-8 py-3.5 font-body font-medium text-sm tracking-wide hover:bg-amber-300 transition-colors"
+                  className="inline-flex items-center gap-3 bg-sky-400 text-white px-8 py-3.5 font-body font-medium text-sm tracking-wide hover:bg-sky-500 transition-colors"
                 >
                   Перейти к материалам
                   <Icon name="ArrowRight" size={16} />
