@@ -110,19 +110,22 @@ export default function Index() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background">
       {/* Navigation */}
-      <header className="border-b border-border bg-white sticky top-0 z-50">
-        <div className="max-w-5xl mx-auto px-8 h-14 flex items-center justify-between">
-          <span className="text-sm font-semibold tracking-tight text-foreground">
-            РусЭкзамен
-          </span>
-          <nav className="flex items-center gap-8">
+      <header className="border-b border-border bg-card/80 backdrop-blur-sm sticky top-0 z-50">
+        <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-2.5">
+            <div className="w-8 h-8 rounded-full bg-primary flex items-center justify-center shadow-sm">
+              <span className="text-primary-foreground text-xs font-bold font-serif">Р</span>
+            </div>
+            <span className="font-semibold text-foreground font-serif">РусЭкзамен</span>
+          </div>
+          <nav className="flex items-center gap-7">
             <button
               onClick={() => setPage("home")}
-              className={`nav-link text-sm transition-colors pb-0.5 ${
+              className={`nav-link text-sm font-medium transition-colors pb-0.5 ${
                 page === "home"
-                  ? "text-foreground active"
+                  ? "text-primary active"
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
@@ -130,9 +133,9 @@ export default function Index() {
             </button>
             <button
               onClick={() => setPage("materials")}
-              className={`nav-link text-sm transition-colors pb-0.5 ${
+              className={`nav-link text-sm font-medium transition-colors pb-0.5 ${
                 page === "materials"
-                  ? "text-foreground active"
+                  ? "text-primary active"
                   : "text-muted-foreground hover:text-foreground"
               }`}
             >
@@ -146,37 +149,39 @@ export default function Index() {
       {page === "home" && (
         <main>
           {/* Hero */}
-          <section className="py-28 border-b border-border">
-            <div className="max-w-5xl mx-auto px-8">
-              <div className="max-w-2xl animate-slide-up">
-                <p className="text-xs text-muted-foreground tracking-widest uppercase mb-8">
+          <section className="py-24 relative overflow-hidden">
+            <div className="absolute inset-0 pointer-events-none opacity-30"
+              style={{background: 'radial-gradient(ellipse 60% 50% at 80% 50%, hsl(36,60%,88%), transparent)'}} />
+            <div className="max-w-5xl mx-auto px-6 relative">
+              <div className="max-w-xl animate-slide-up">
+                <span className="inline-block bg-primary/10 text-primary text-xs font-medium px-3 py-1 rounded-full mb-7">
                   Подготовка к ЕГЭ и ОГЭ
-                </p>
-                <h1 className="text-6xl font-semibold leading-[1.1] tracking-tight mb-6 text-foreground">
-                  Русский язык.<br />
-                  <span className="text-muted-foreground font-normal">Чёткие правила.</span>
+                </span>
+                <h1 className="font-serif text-5xl font-bold leading-snug mb-5 text-foreground">
+                  Русский язык —<br />
+                  <span className="text-primary">правила просто</span>
                 </h1>
-                <p className="text-muted-foreground text-lg leading-relaxed mb-10 max-w-lg">
-                  Подробные объяснения правил орфографии, пунктуации и грамматики — всё необходимое для уверенной сдачи экзамена.
+                <p className="text-muted-foreground text-[17px] leading-relaxed mb-9">
+                  Подробные объяснения орфографии, пунктуации и грамматики. Всё необходимое для уверенной сдачи экзамена.
                 </p>
                 <button
                   onClick={() => setPage("materials")}
-                  className="inline-flex items-center gap-3 bg-foreground text-background px-7 py-3 text-sm font-medium hover:opacity-80 transition-opacity"
+                  className="inline-flex items-center gap-2.5 bg-primary text-primary-foreground px-6 py-3 rounded-xl text-sm font-medium shadow-md hover:shadow-lg hover:brightness-105 transition-all"
                 >
-                  Перейти к материалам
-                  <Icon name="ArrowRight" size={15} />
+                  Открыть материалы
+                  <Icon name="ArrowRight" size={16} />
                 </button>
               </div>
             </div>
           </section>
 
           {/* Stats */}
-          <section className="border-b border-border">
-            <div className="max-w-5xl mx-auto px-8">
-              <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-border">
+          <section className="py-10">
+            <div className="max-w-5xl mx-auto px-6">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {stats.map((s) => (
-                  <div key={s.label} className="py-10 px-8 text-center">
-                    <div className="text-3xl font-semibold text-foreground mb-1">{s.value}</div>
+                  <div key={s.label} className="warm-card p-6 text-center">
+                    <div className="font-serif text-3xl font-bold text-primary mb-1">{s.value}</div>
                     <div className="text-xs text-muted-foreground uppercase tracking-widest">{s.label}</div>
                   </div>
                 ))}
@@ -185,33 +190,33 @@ export default function Index() {
           </section>
 
           {/* About */}
-          <section className="py-24 border-b border-border">
-            <div className="max-w-5xl mx-auto px-8">
-              <div className="grid md:grid-cols-2 gap-20 items-start">
-                <div>
-                  <p className="text-xs uppercase tracking-widest text-muted-foreground mb-5">О портале</p>
-                  <h2 className="text-3xl font-semibold text-foreground leading-tight mb-6">
+          <section className="py-16">
+            <div className="max-w-5xl mx-auto px-6">
+              <div className="grid md:grid-cols-2 gap-12 items-start">
+                <div className="warm-card p-8">
+                  <span className="text-xs uppercase tracking-widest text-primary font-medium">О портале</span>
+                  <h2 className="font-serif text-2xl font-bold text-foreground leading-snug mt-3 mb-4">
                     Структурированные знания для сдачи экзамена
                   </h2>
-                  <p className="text-muted-foreground leading-relaxed mb-4 text-[15px]">
-                    Каждое правило подкреплено подробным объяснением, примерами и исключениями.
-                    Никакой воды — только то, что действительно нужно знать.
+                  <p className="text-muted-foreground leading-relaxed mb-3 text-[15px]">
+                    Каждое правило — подробное объяснение, примеры и исключения. Никакой воды, только нужное.
                   </p>
                   <p className="text-muted-foreground leading-relaxed text-[15px]">
-                    Материалы охватывают орфографию, пунктуацию, грамматику и стилистику —
-                    все темы, которые проверяются на ЕГЭ и ОГЭ.
+                    Орфография, пунктуация, грамматика, стилистика — все темы ЕГЭ и ОГЭ.
                   </p>
                 </div>
-                <div className="grid grid-cols-2 gap-px bg-border border border-border">
+                <div className="grid grid-cols-2 gap-4">
                   {rulesData.map((cat) => (
                     <div
                       key={cat.id}
                       onClick={() => { setPage("materials"); setActiveCategory(cat.id); }}
-                      className="bg-white p-6 cursor-pointer hover:bg-secondary transition-colors group"
+                      className="warm-card p-5 cursor-pointer group"
                     >
-                      <Icon name={cat.icon} fallback="BookOpen" size={20} className="mb-4 text-muted-foreground group-hover:text-foreground transition-colors" />
+                      <div className="w-9 h-9 rounded-lg bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-colors">
+                        <Icon name={cat.icon} fallback="BookOpen" size={18} className="text-primary" />
+                      </div>
                       <div className="text-sm font-semibold text-foreground">{cat.category}</div>
-                      <div className="text-xs text-muted-foreground mt-1">{cat.topics.length} темы</div>
+                      <div className="text-xs text-muted-foreground mt-0.5">{cat.topics.length} темы</div>
                     </div>
                   ))}
                 </div>
@@ -220,23 +225,26 @@ export default function Index() {
           </section>
 
           {/* CTA */}
-          <section className="py-20">
-            <div className="max-w-5xl mx-auto px-8 flex flex-col md:flex-row items-center justify-between gap-8">
-              <div>
-                <h2 className="text-2xl font-semibold text-foreground mb-2">
-                  Готов начать подготовку?
-                </h2>
-                <p className="text-muted-foreground text-[15px]">
-                  Все материалы доступны бесплатно и без регистрации.
-                </p>
+          <section className="py-12 mb-8">
+            <div className="max-w-5xl mx-auto px-6">
+              <div className="warm-card p-10 flex flex-col md:flex-row items-center justify-between gap-7"
+                style={{background: 'linear-gradient(135deg, hsl(36,40%,99%) 0%, hsl(22,30%,95%) 100%)'}}>
+                <div>
+                  <h2 className="font-serif text-2xl font-bold text-foreground mb-2">
+                    Готов начать подготовку?
+                  </h2>
+                  <p className="text-muted-foreground text-[15px]">
+                    Все материалы бесплатны и доступны без регистрации.
+                  </p>
+                </div>
+                <button
+                  onClick={() => setPage("materials")}
+                  className="flex-shrink-0 inline-flex items-center gap-2.5 bg-primary text-primary-foreground px-6 py-3 rounded-xl text-sm font-medium shadow-md hover:brightness-105 transition-all"
+                >
+                  Перейти к правилам
+                  <Icon name="BookOpen" size={16} />
+                </button>
               </div>
-              <button
-                onClick={() => setPage("materials")}
-                className="flex-shrink-0 inline-flex items-center gap-3 border border-foreground text-foreground px-7 py-3 text-sm font-medium hover:bg-foreground hover:text-background transition-colors"
-              >
-                Открыть материалы
-                <Icon name="ArrowRight" size={15} />
-              </button>
             </div>
           </section>
         </main>
@@ -244,20 +252,20 @@ export default function Index() {
 
       {/* MATERIALS PAGE */}
       {page === "materials" && (
-        <main className="max-w-5xl mx-auto px-8 py-16">
-          <div className="mb-12 border-b border-border pb-8">
-            <p className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Учебные материалы</p>
-            <h1 className="text-5xl font-semibold text-foreground tracking-tight">Правила и грамматика</h1>
+        <main className="max-w-5xl mx-auto px-6 py-12">
+          <div className="mb-10">
+            <span className="text-xs uppercase tracking-widest text-primary font-medium">Учебные материалы</span>
+            <h1 className="font-serif text-4xl font-bold text-foreground mt-2">Правила и грамматика</h1>
           </div>
 
           {/* Category tabs */}
-          <div className="flex flex-wrap gap-2 mb-12">
+          <div className="flex flex-wrap gap-2 mb-10">
             <button
               onClick={() => setActiveCategory(null)}
-              className={`px-4 py-1.5 text-sm font-medium border transition-colors ${
+              className={`px-4 py-2 text-sm font-medium rounded-full border transition-all ${
                 activeCategory === null
-                  ? "border-foreground bg-foreground text-background"
-                  : "border-border text-muted-foreground hover:border-foreground hover:text-foreground"
+                  ? "bg-primary text-primary-foreground border-primary shadow-sm"
+                  : "border-border text-muted-foreground hover:border-primary hover:text-primary bg-card"
               }`}
             >
               Все разделы
@@ -266,10 +274,10 @@ export default function Index() {
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(activeCategory === cat.id ? null : cat.id)}
-                className={`px-4 py-1.5 text-sm font-medium border transition-colors flex items-center gap-2 ${
+                className={`px-4 py-2 text-sm font-medium rounded-full border transition-all flex items-center gap-1.5 ${
                   activeCategory === cat.id
-                    ? "border-foreground bg-foreground text-background"
-                    : "border-border text-muted-foreground hover:border-foreground hover:text-foreground"
+                    ? "bg-primary text-primary-foreground border-primary shadow-sm"
+                    : "border-border text-muted-foreground hover:border-primary hover:text-primary bg-card"
                 }`}
               >
                 <Icon name={cat.icon} fallback="BookOpen" size={13} />
@@ -279,14 +287,17 @@ export default function Index() {
           </div>
 
           {/* Rules list */}
-          <div className="space-y-14">
+          <div className="space-y-10">
             {rulesData
               .filter((cat) => activeCategory === null || cat.id === activeCategory)
               .map((cat) => (
                 <div key={cat.id}>
-                  <div className="flex items-center gap-4 mb-5">
-                    <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">{cat.category}</h2>
-                    <div className="flex-1 h-px bg-border" />
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center">
+                      <Icon name={cat.icon} fallback="BookOpen" size={14} className="text-primary" />
+                    </div>
+                    <h2 className="font-serif text-lg font-bold text-foreground">{cat.category}</h2>
+                    <div className="flex-1 h-px bg-border ml-1" />
                   </div>
 
                   <div className="space-y-3">
@@ -296,14 +307,14 @@ export default function Index() {
                       return (
                         <div
                           key={idx}
-                          className="border border-border bg-white rule-card transition-all duration-200"
+                          className="warm-card overflow-hidden"
                         >
                           <button
                             onClick={() => toggleRule(key)}
                             className="w-full flex items-center justify-between px-6 py-5 text-left group"
                           >
                             <div>
-                              <div className="text-sm font-medium text-foreground">
+                              <div className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
                                 {topic.title}
                               </div>
                               {!isOpen && (
@@ -312,8 +323,8 @@ export default function Index() {
                                 </div>
                               )}
                             </div>
-                            <div className={`ml-4 flex-shrink-0 text-muted-foreground transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}>
-                              <Icon name="ChevronDown" size={16} />
+                            <div className={`ml-4 flex-shrink-0 w-7 h-7 rounded-full bg-secondary flex items-center justify-center text-muted-foreground transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}>
+                              <Icon name="ChevronDown" size={15} />
                             </div>
                           </button>
 
@@ -325,15 +336,15 @@ export default function Index() {
                                     {block.split("\n").map((line, li) => {
                                       if (line.startsWith("•")) {
                                         return (
-                                          <div key={li} className="flex items-start gap-2.5 mb-1.5 text-sm text-foreground">
-                                            <span className="text-muted-foreground mt-0.5 flex-shrink-0">—</span>
+                                          <div key={li} className="flex items-start gap-2.5 mb-2 text-sm text-foreground">
+                                            <span className="text-primary mt-0.5 flex-shrink-0 font-bold">·</span>
                                             <span>{line.slice(1).trim()}</span>
                                           </div>
                                         );
                                       }
                                       if (/^\d+\./.test(line)) {
                                         return (
-                                          <div key={li} className="text-sm font-semibold text-foreground mb-2 mt-4">
+                                          <div key={li} className="text-sm font-semibold text-primary mb-2 mt-4">
                                             {line}
                                           </div>
                                         );
@@ -360,9 +371,14 @@ export default function Index() {
       )}
 
       {/* Footer */}
-      <footer className="border-t border-border mt-16">
-        <div className="max-w-5xl mx-auto px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
-          <span className="text-sm font-semibold text-foreground">РусЭкзамен</span>
+      <footer className="border-t border-border mt-16 bg-card">
+        <div className="max-w-5xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex items-center gap-2">
+            <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center">
+              <span className="text-primary-foreground text-xs font-bold font-serif">Р</span>
+            </div>
+            <span className="text-sm font-semibold text-foreground font-serif">РусЭкзамен</span>
+          </div>
           <p className="text-xs text-muted-foreground text-center">
             Портал для подготовки к ЕГЭ и ОГЭ по русскому языку
           </p>

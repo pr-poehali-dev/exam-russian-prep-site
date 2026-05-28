@@ -20,7 +20,8 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['Golos Text', 'sans-serif'],
+				sans: ['Rubik', 'sans-serif'],
+				serif: ['Merriweather', 'serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',
