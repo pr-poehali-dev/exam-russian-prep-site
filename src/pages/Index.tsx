@@ -2,6 +2,32 @@ import { useState } from "react";
 import Icon from "@/components/ui/icon";
 
 type Page = "home" | "materials";
+type TableRow = { name: string; meaning: string; literature: string; modern: string };
+
+const tableData: TableRow[] = [
+  { name: "Эпитет", meaning: "Красочное определение", literature: "«Парус одинокий» (М. Лермонтов)", modern: "«Тёмная сила»" },
+  { name: "Сравнение", meaning: "Сопоставление предметов по сходству", literature: "«Катились глаза словно две слезинки» (М. Шолохов)", modern: "«Я буду любить тебя всегда, как будто Уитни»" },
+  { name: "Метафора", meaning: "Скрытое сравнение", literature: "«Горит восток зарёю новой» (А. Пушкин)", modern: "«Твоя любовь — наркотик»" },
+  { name: "Олицетворение", meaning: "Одушевление неодушевлённых предметов", literature: "«Заплакал снег» (С. Есенин)", modern: "«Веди меня звездой на небе»" },
+  { name: "Метонимия", meaning: "Замена слова по смежности понятий", literature: "«Я три тарелки съел» (И. Крылов)", modern: "«На мне глаза Меган Фокс»" },
+  { name: "Гипербола", meaning: "Художественное преувеличение", literature: "«Сто тысяч солнц» (В. Маяковский)", modern: "«Лучший завтрак во Вселенной»" },
+  { name: "Литота", meaning: "Художественное преуменьшение", literature: "«Мужичок с ноготок» (Н. Некрасов)", modern: "«Чуть-чуть дороже, но в разы лучше»" },
+  { name: "Ирония", meaning: "Слово в смысле, противоположном буквальному", literature: "«Откуда, умная, бредёшь ты, голова?» (И. Крылов)", modern: "«Ты думала, я про тебя пишу песни?»" },
+  { name: "Аллегория", meaning: "Отвлечённая идея через конкретный образ", literature: "Волк — жестокость, Лисица — хитрость (И. Крылов)", modern: "«У меня Цербер под капотом»" },
+  { name: "Перифраз(а)", meaning: "Замена слова описательным выражением", literature: "«Царь зверей» (лев)", modern: "«Страна восходящего солнца привозит вам…»" },
+  { name: "Анафора", meaning: "Повтор слов в начале отрезков речи", literature: "«Я пришёл, я увидел, я победил»", modern: "«Ты думала... Ты позвонишь...»" },
+  { name: "Эпифора", meaning: "Повтор слов в конце отрезков речи", literature: "«...отчего я титулярный советник? Почему именно титулярный советник?» (Н. Гоголь)", modern: "«Это реальность, а не сны… Это реальность, а не сны…»" },
+  { name: "Антитеза", meaning: "Противопоставление контрастных понятий", literature: "«Ученье — свет, а не ученье — тьма»", modern: "«И ты, и я, мы жертвы, но для тебя я монстр»" },
+  { name: "Оксюморон", meaning: "Сочетание несовместимых понятий", literature: "«Живой труп» (Л. Толстой)", modern: "«Я очарован болью»" },
+  { name: "Градация", meaning: "Слова по возрастающей или убывающей значимости", literature: "«Не думай, не беги, не бойся»", modern: "«Владей, управляй, повелевай»" },
+  { name: "Инверсия", meaning: "Нарушение обычного порядка слов", literature: "«Белеет парус одинокий» (М. Лермонтов)", modern: "«Я выступал нелегально в том году в Европе»" },
+  { name: "Параллелизм", meaning: "Сходное построение соседних предложений", literature: "«Твои очи — как звёзды, твои уста — как заря»", modern: "«Идеально для утра. Идеально для ночи»" },
+  { name: "Риторический вопрос", meaning: "Вопрос, не требующий ответа", literature: "«Что делать?» (Н. Чернышевский)", modern: "«Зачем мне сердце, если оно не бьётся?»" },
+  { name: "Риторическое обращение", meaning: "Обращение к отсутствующему или неодушевлённому", literature: "«Русь, куда ж несёшься ты?» (Н. Гоголь)", modern: "«Ангел, возьми мой поцелуй, души меня»" },
+  { name: "Многосоюзие", meaning: "Намеренное использование повторяющихся союзов", literature: "«И снег, и ветер, и звёзд ночной полёт» (О. Мандельштам)", modern: "«И стирает, и ополаскивает, и отбеливает, и защищает»" },
+  { name: "Бессоюзие", meaning: "Намеренный пропуск союзов", literature: "«Швед, русский — колет, рубит, режет»", modern: "«Жарь. Парь. Запекай.»" },
+  { name: "Эллипсис", meaning: "Пропуск подразумеваемого члена предложения", literature: "«Вместо хлеба — камень»", modern: "«Ваши губы — наш шедевр»" },
+];
 
 const rulesData = [
   {
@@ -87,7 +113,8 @@ const rulesData = [
       {
         title: "Средства художественной выразительности",
         short: "Тропы и фигуры речи: метафора, эпитет, сравнение, анафора и другие.",
-        full: `ТЕОРЕТИЧЕСКАЯ ЧАСТЬ. Классификация основных средств выразительности.\n\nОсновные виды тропов:\n\n• Эпитет — красочное определение\n• Сравнение — сопоставление предметов или явлений по сходству\n• Метафора — скрытое сравнение\n• Олицетворение — «одушевление» неодушевлённых предметов\n• Метонимия — замена одного слова другим на основе смежности понятий\n• Гипербола — художественное преувеличение\n• Литота — художественное преуменьшение\n• Ирония — употребление слова или выражения в смысле, противоположном буквальному, с целью насмешки\n• Аллегория — выражение отвлечённой идеи через конкретный образ\n• Перифраз(а) — замена слова описательным выражением, указывающим на его признаки\n\nОсновные стилистические фигуры (особые синтаксические построения, усиливающие выразительность речи):\n\n• Анафора — единоначатие, повтор слов или звуков в начале отрезков речи\n• Эпифора — повтор слов или выражений в конце смежных отрезков речи\n• Антитеза — противопоставление контрастных понятий или образов\n• Оксюморон — сочетание несовместимых по смыслу понятий\n• Градация — расположение слов или выражений по возрастающей или убывающей значимости\n• Инверсия — нарушение обычного порядка слов для смыслового или эмоционального выделения\n• Параллелизм — сходное синтаксическое построение соседних предложений или отрезков речи\n• Риторический вопрос — утверждение или отрицание в форме вопроса, не требующего ответа\n• Риторическое обращение — подчёркнутое обращение к неодушевлённому предмету или отсутствующему лицу\n• Многосоюзие — намеренное использование повторяющихся союзов\n• Бессоюзие — намеренный пропуск союзов между однородными членами\n• Эллипсис — намеренный пропуск подразумеваемого члена предложения\n\nПримеры тропов:\n\n• Эпитет — Художественная литература: «Парус одинокий» (М. Лермонтов). Современная песня: в треке «imya2» 9mice — «Тёмная сила».\n• Сравнение — Художественная литература: «Катились глаза словно две слезинки» (М. Шолохов). Современная песня: в треке «hello bandits» 9mice&Kai Angel — «Я буду любить тебя всегда, как будто Уитни» — отсылка к Уитни Хьюстон. Сравнение создаёт романтический, но ироничный образ вечной любви.\n• Метафора — Художественная литература: «Горит восток зарёю новой» (А. Пушкин). Современная песня: в треке «Narcotic» 9mice — «Твоя любовь — наркотик» — любовь здесь не просто сильное чувство, а химическая зависимость, от которой невозможно отказаться.\n• Олицетворение — Художественная литература: «Заплакал снег» (С. Есенин). Современная песня: в треке «Homecoming» 9mice&Kai Angel — «Веди меня звездой на небе» — звезда наделяется способностью вести, как живой поводырь.\n• Метонимия — Художественная литература: «Я три тарелки съел» (И. Крылов; содержимое вместо тарелок). Современная песня: в треке «2017» 9mice&Kai Angel — «На мне глаза Меган Фокс» — имя актрисы замещает её взгляд, внимание.\n• Гипербола — Художественная литература: «Сто тысяч солнц» (В. Маяковский). Реклама: «Лучший завтрак во Вселенной» (McDonald's).\n• Литота — Художественная литература: «Мужичок с ноготок» (Н. Некрасов). Реклама: «Чуть-чуть дороже, но в разы лучше» (Audi).\n• Ирония — Художественная литература: «Откуда, умная, бредёшь ты, голова?» (И. Крылов — ослу). Современная песня: в треке «lovesong» Kai Angel — «Ты думала, я про тебя пишу песни?» — ироничное опровержение ожиданий. Она думала, что она муза, а герой холоден и недоступен.\n• Аллегория — Художественная литература: в баснях Крылова (Волк — жестокость, Лисица — хитрость). Современная песня: в треке «famous» 9mice — «У меня Цербер под капотом» — машина становится аллегорией ада на колёсах.\n• Перифраз(а) — Художественная литература: «Царь зверей». Реклама: «Страна восходящего солнца привозит вам…» (Toyota).\n\nПримеры стилистических фигур:\n\n• Анафора — Художественная литература: «Я пришёл, я увидел, я победил». Современная песня: в треке «lovesong» Kai Angel — «Ты думала... Ты позвонишь...» — повтор «ты» фиксирует внимание на девушке и её ожиданиях.\n• Эпифора — Художественная литература: «Мне бы хотелось знать, отчего я титулярный советник? Почему именно титулярный советник?» (Н. Гоголь). Современная песня: в треке «HILLS» Kai Angel — «Это реальность, а не сны… Это реальность, а не сны…»\n• Антитеза — Художественная литература: «Ученье — свет, а не ученье — тьма». Современная песня: в треке «Narcotic» 9mice — «И ты, и я, мы жертвы, но для тебя я монстр».\n• Оксюморон — Художественная литература: «Живой труп» (Л. Толстой). Современная песня: в треке «Narcotic» 9mice — «Я очарован болью» — выражает мазохистскую природу этой любви.\n• Градация — Художественная литература: «Не думай, не беги, не бойся». Реклама: «Владей, управляй, повелевай» (Mercedes-Benz).\n• Инверсия — Художественная литература: «Белеет парус одинокий» (М. Лермонтов). Современная песня: в треке «I Love God» 9mice&Kai Angel — «Я выступал нелегально в том году в Европе».\n• Параллелизм — Художественная литература: «Твои очи — как звёзды, твои уста — как заря». Реклама: «Идеально для утра. Идеально для ночи» (Nescafe).\n• Риторический вопрос — Художественная литература: «Что делать?» (Н. Чернышевский). Современная песня: в треке «Homecoming» 9mice&Kai Angel — «Зачем мне сердце, если оно не бьётся?» — выражает экзистенциальную пустоту.\n• Риторическое обращение — Художественная литература: «Русь, куда ж несёшься ты?» (Н. Гоголь). Современная песня: в треке «Jealous» 9mice — «Ангел, возьми мой поцелуй, души меня» — обращение к существу, которое не присутствует физически.\n• Многосоюзие — Художественная литература: «И снег, и ветер, и звёзд ночной полёт» (О. Мандельштам). Реклама: «И стирает, и ополаскивает, и отбеливает, и защищает» (Ariel).\n• Бессоюзие — Художественная литература: «Швед, русский — колет, рубит, режет». Реклама: «Жарь. Парь. Запекай.» (мультиварка Redmond).\n• Эллипсис — Художественная литература: «Вместо хлеба — камень». Реклама: «Ваши губы — наш шедевр».`,
+        full: `ТЕОРЕТИЧЕСКАЯ ЧАСТЬ. Классификация основных средств выразительности.\n\nОсновные виды тропов:\n\n• Эпитет — красочное определение\n• Сравнение — сопоставление предметов или явлений по сходству\n• Метафора — скрытое сравнение\n• Олицетворение — одушевление неодушевлённых предметов\n• Метонимия — замена одного слова другим на основе смежности понятий\n• Гипербола — художественное преувеличение\n• Литота — художественное преуменьшение\n• Ирония — употребление слова в смысле, противоположном буквальному, с целью насмешки\n• Аллегория — выражение отвлечённой идеи через конкретный образ\n• Перифраз(а) — замена слова описательным выражением, указывающим на его признаки\n\nОсновные стилистические фигуры:\n\n• Анафора — единоначатие, повтор слов в начале отрезков речи\n• Эпифора — повтор слов в конце смежных отрезков речи\n• Антитеза — противопоставление контрастных понятий или образов\n• Оксюморон — сочетание несовместимых по смыслу понятий\n• Градация — расположение слов по возрастающей или убывающей значимости\n• Инверсия — нарушение обычного порядка слов для выделения\n• Параллелизм — сходное синтаксическое построение соседних предложений\n• Риторический вопрос — утверждение в форме вопроса, не требующего ответа\n• Риторическое обращение — обращение к неодушевлённому предмету или отсутствующему лицу\n• Многосоюзие — намеренное использование повторяющихся союзов\n• Бессоюзие — намеренный пропуск союзов\n• Эллипсис — намеренный пропуск подразумеваемого члена предложения`,
+        tableData,
       },
     ],
   },
@@ -124,9 +151,7 @@ export default function Index() {
             <button
               onClick={() => setPage("home")}
               className={`nav-link text-sm font-medium transition-colors pb-0.5 ${
-                page === "home"
-                  ? "text-primary active"
-                  : "text-muted-foreground hover:text-foreground"
+                page === "home" ? "text-primary active" : "text-muted-foreground hover:text-foreground"
               }`}
             >
               Главная
@@ -134,9 +159,7 @@ export default function Index() {
             <button
               onClick={() => setPage("materials")}
               className={`nav-link text-sm font-medium transition-colors pb-0.5 ${
-                page === "materials"
-                  ? "text-primary active"
-                  : "text-muted-foreground hover:text-foreground"
+                page === "materials" ? "text-primary active" : "text-muted-foreground hover:text-foreground"
               }`}
             >
               Материалы
@@ -148,10 +171,9 @@ export default function Index() {
       {/* HOME PAGE */}
       {page === "home" && (
         <main>
-          {/* Hero */}
           <section className="py-24 relative overflow-hidden">
             <div className="absolute inset-0 pointer-events-none opacity-30"
-              style={{background: 'radial-gradient(ellipse 60% 50% at 80% 50%, hsl(207,60%,90%), transparent)'}} />
+              style={{background: "radial-gradient(ellipse 60% 50% at 80% 50%, hsl(207,60%,90%), transparent)"}} />
             <div className="max-w-5xl mx-auto px-6 relative">
               <div className="max-w-xl animate-slide-up">
                 <span className="inline-block bg-primary/10 text-primary text-xs font-medium px-3 py-1 rounded-full mb-7">
@@ -175,7 +197,6 @@ export default function Index() {
             </div>
           </section>
 
-          {/* Stats */}
           <section className="py-10">
             <div className="max-w-5xl mx-auto px-6">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -189,7 +210,6 @@ export default function Index() {
             </div>
           </section>
 
-          {/* About */}
           <section className="py-16">
             <div className="max-w-5xl mx-auto px-6">
               <div className="grid md:grid-cols-2 gap-12 items-start">
@@ -224,11 +244,10 @@ export default function Index() {
             </div>
           </section>
 
-          {/* CTA */}
           <section className="py-12 mb-8">
             <div className="max-w-5xl mx-auto px-6">
               <div className="warm-card p-10 flex flex-col md:flex-row items-center justify-between gap-7"
-                style={{background: 'linear-gradient(135deg, hsl(210,40%,98%) 0%, hsl(207,45%,93%) 100%)'}}>
+                style={{background: "linear-gradient(135deg, hsl(210,40%,98%) 0%, hsl(207,45%,93%) 100%)"}}>
                 <div>
                   <h2 className="font-serif text-2xl font-bold text-foreground mb-2">
                     Готов начать подготовку?
@@ -258,7 +277,6 @@ export default function Index() {
             <h1 className="font-serif text-4xl font-bold text-foreground mt-2">Правила и грамматика</h1>
           </div>
 
-          {/* Category tabs */}
           <div className="flex flex-wrap gap-2 mb-10">
             <button
               onClick={() => setActiveCategory(null)}
@@ -286,7 +304,6 @@ export default function Index() {
             ))}
           </div>
 
-          {/* Rules list */}
           <div className="space-y-10">
             {rulesData
               .filter((cat) => activeCategory === null || cat.id === activeCategory)
@@ -304,11 +321,9 @@ export default function Index() {
                     {cat.topics.map((topic, idx) => {
                       const key = `${cat.id}-${idx}`;
                       const isOpen = expandedRule === key;
+                      const hasTable = "tableData" in topic && Array.isArray(topic.tableData);
                       return (
-                        <div
-                          key={idx}
-                          className="warm-card overflow-hidden"
-                        >
+                        <div key={idx} className="warm-card overflow-hidden">
                           <button
                             onClick={() => toggleRule(key)}
                             className="w-full flex items-center justify-between px-6 py-5 text-left group"
@@ -318,9 +333,7 @@ export default function Index() {
                                 {topic.title}
                               </div>
                               {!isOpen && (
-                                <div className="text-sm text-muted-foreground mt-0.5">
-                                  {topic.short}
-                                </div>
+                                <div className="text-sm text-muted-foreground mt-0.5">{topic.short}</div>
                               )}
                             </div>
                             <div className={`ml-4 flex-shrink-0 w-7 h-7 rounded-full bg-secondary flex items-center justify-center text-muted-foreground transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}>
@@ -350,13 +363,39 @@ export default function Index() {
                                         );
                                       }
                                       return (
-                                        <div key={li} className="text-sm text-muted-foreground mb-1 leading-relaxed">
+                                        <div key={li} className="text-sm text-muted-foreground mb-1 leading-relaxed font-medium">
                                           {line}
                                         </div>
                                       );
                                     })}
                                   </div>
                                 ))}
+
+                                {hasTable && (
+                                  <div className="mt-4 overflow-x-auto">
+                                    <p className="text-xs font-semibold uppercase tracking-widest text-primary mb-3">Примеры</p>
+                                    <table className="w-full text-sm border-collapse">
+                                      <thead>
+                                        <tr className="bg-primary/8">
+                                          <th className="text-left px-3 py-2.5 font-semibold text-foreground border border-border text-xs w-32">Название</th>
+                                          <th className="text-left px-3 py-2.5 font-semibold text-foreground border border-border text-xs">Суть</th>
+                                          <th className="text-left px-3 py-2.5 font-semibold text-foreground border border-border text-xs">Худ. литература</th>
+                                          <th className="text-left px-3 py-2.5 font-semibold text-foreground border border-border text-xs">Песня / Реклама</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        {(topic as typeof topic & { tableData: TableRow[] }).tableData.map((row, ri) => (
+                                          <tr key={ri} className={ri % 2 === 0 ? "bg-white" : "bg-muted/30"}>
+                                            <td className="px-3 py-2 border border-border font-semibold text-foreground align-top text-xs">{row.name}</td>
+                                            <td className="px-3 py-2 border border-border text-muted-foreground align-top text-xs">{row.meaning}</td>
+                                            <td className="px-3 py-2 border border-border text-foreground align-top text-xs italic">{row.literature}</td>
+                                            <td className="px-3 py-2 border border-border text-foreground align-top text-xs italic">{row.modern}</td>
+                                          </tr>
+                                        ))}
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                )}
                               </div>
                             </div>
                           )}
@@ -370,7 +409,6 @@ export default function Index() {
         </main>
       )}
 
-      {/* Footer */}
       <footer className="border-t border-border mt-16 bg-card">
         <div className="max-w-5xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-2">
