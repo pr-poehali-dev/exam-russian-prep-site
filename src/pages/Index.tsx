@@ -151,7 +151,7 @@ export default function Index() {
           {/* Hero */}
           <section className="py-24 relative overflow-hidden">
             <div className="absolute inset-0 pointer-events-none opacity-30"
-              style={{background: 'radial-gradient(ellipse 60% 50% at 80% 50%, hsl(36,60%,88%), transparent)'}} />
+              style={{background: 'radial-gradient(ellipse 60% 50% at 80% 50%, hsl(207,60%,90%), transparent)'}} />
             <div className="max-w-5xl mx-auto px-6 relative">
               <div className="max-w-xl animate-slide-up">
                 <span className="inline-block bg-primary/10 text-primary text-xs font-medium px-3 py-1 rounded-full mb-7">
@@ -228,7 +228,7 @@ export default function Index() {
           <section className="py-12 mb-8">
             <div className="max-w-5xl mx-auto px-6">
               <div className="warm-card p-10 flex flex-col md:flex-row items-center justify-between gap-7"
-                style={{background: 'linear-gradient(135deg, hsl(36,40%,99%) 0%, hsl(22,30%,95%) 100%)'}}>
+                style={{background: 'linear-gradient(135deg, hsl(210,40%,98%) 0%, hsl(207,45%,93%) 100%)'}}>
                 <div>
                   <h2 className="font-serif text-2xl font-bold text-foreground mb-2">
                     Готов начать подготовку?

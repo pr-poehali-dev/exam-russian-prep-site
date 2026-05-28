@@ -4,44 +4,44 @@
 
 @layer base {
   :root {
-    --background: 36 33% 96%;
-    --foreground: 25 30% 18%;
+    --background: 210 30% 97%;
+    --foreground: 215 25% 25%;
 
-    --card: 36 40% 99%;
-    --card-foreground: 25 30% 18%;
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 25%;
 
-    --popover: 36 40% 99%;
-    --popover-foreground: 25 30% 18%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 25%;
 
-    --primary: 22 55% 42%;
-    --primary-foreground: 36 40% 99%;
+    --primary: 207 50% 62%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 36 25% 91%;
-    --secondary-foreground: 25 30% 25%;
+    --secondary: 210 25% 93%;
+    --secondary-foreground: 215 20% 35%;
 
-    --muted: 36 20% 93%;
-    --muted-foreground: 25 15% 50%;
+    --muted: 210 20% 95%;
+    --muted-foreground: 215 15% 55%;
 
-    --accent: 22 55% 42%;
-    --accent-foreground: 36 40% 99%;
+    --accent: 207 50% 62%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 72% 55%;
-    --destructive-foreground: 36 40% 99%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 33 20% 87%;
-    --input: 33 20% 87%;
-    --ring: 22 55% 42%;
+    --border: 210 20% 88%;
+    --input: 210 20% 88%;
+    --ring: 207 50% 62%;
 
     --radius: 0.75rem;
 
-    --sidebar-background: 36 33% 96%;
-    --sidebar-foreground: 25 30% 18%;
-    --sidebar-primary: 22 55% 42%;
-    --sidebar-primary-foreground: 36 40% 99%;
-    --sidebar-accent: 36 25% 91%;
-    --sidebar-accent-foreground: 25 30% 25%;
-    --sidebar-border: 33 20% 87%;
-    --sidebar-ring: 22 55% 42%;
+    --sidebar-background: 210 30% 97%;
+    --sidebar-foreground: 215 25% 25%;
+    --sidebar-primary: 207 50% 62%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 25% 93%;
+    --sidebar-accent-foreground: 215 20% 35%;
+    --sidebar-border: 210 20% 88%;
+    --sidebar-ring: 207 50% 62%;
   }
 }
 
@@ -73,17 +73,17 @@
   }
 
   .warm-card {
-    background: hsl(36, 40%, 99%);
-    border: 1px solid hsl(33, 20%, 87%);
+    background: hsl(0, 0%, 100%);
+    border: 1px solid hsl(210, 20%, 88%);
     border-radius: 0.75rem;
-    box-shadow: 0 2px 12px rgba(120, 80, 40, 0.06);
+    box-shadow: 0 2px 14px rgba(100, 140, 180, 0.08);
     transition:
       box-shadow 0.2s ease,
       transform 0.2s ease;
   }
 
   .warm-card:hover {
-    box-shadow: 0 6px 28px rgba(120, 80, 40, 0.13);
+    box-shadow: 0 6px 28px rgba(100, 140, 180, 0.16);
     transform: translateY(-2px);
   }
 
