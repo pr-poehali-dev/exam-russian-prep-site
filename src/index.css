@@ -4,44 +4,44 @@
 
 @layer base {
   :root {
-    --background: 210 15% 96%;
-    --foreground: 215 20% 22%;
+    --background: 0 0% 100%;
+    --foreground: 0 0% 9%;
 
     --card: 0 0% 100%;
-    --card-foreground: 215 20% 22%;
+    --card-foreground: 0 0% 9%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 215 20% 22%;
+    --popover-foreground: 0 0% 9%;
 
-    --primary: 215 20% 35%;
+    --primary: 0 0% 9%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 210 12% 90%;
-    --secondary-foreground: 215 20% 25%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 20%;
 
-    --muted: 210 10% 93%;
-    --muted-foreground: 215 10% 50%;
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 50%;
 
-    --accent: 215 15% 55%;
-    --accent-foreground: 0 0% 100%;
+    --accent: 0 0% 96%;
+    --accent-foreground: 0 0% 9%;
 
     --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 210 12% 85%;
-    --input: 210 12% 85%;
-    --ring: 215 20% 35%;
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 0% 9%;
 
-    --radius: 2px;
+    --radius: 0px;
 
-    --sidebar-background: 210 15% 96%;
-    --sidebar-foreground: 215 20% 22%;
-    --sidebar-primary: 215 20% 35%;
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 0 0% 9%;
+    --sidebar-primary: 0 0% 9%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 210 12% 90%;
-    --sidebar-accent-foreground: 215 20% 25%;
-    --sidebar-border: 210 12% 85%;
-    --sidebar-ring: 215 20% 35%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: 0 0% 9%;
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: 0 0% 9%;
   }
 }
 
@@ -52,36 +52,28 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: "IBM Plex Sans", sans-serif;
+    font-family: "Golos Text", sans-serif;
   }
 
   h1,
   h2,
   h3,
   h4 {
-    font-family: "Cormorant", serif;
+    font-family: "Golos Text", sans-serif;
   }
 }
 
 @layer utilities {
-  .font-display {
-    font-family: "Cormorant", serif;
-  }
-  .font-body {
-    font-family: "IBM Plex Sans", sans-serif;
-  }
-
   .animate-fade-in {
-    animation: fadeIn 0.6s ease forwards;
+    animation: fadeIn 0.5s ease forwards;
   }
 
   .animate-slide-up {
-    animation: slideUp 0.7s ease forwards;
+    animation: slideUp 0.6s ease forwards;
   }
 
   .rule-card:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 32px rgba(30, 40, 80, 0.12);
+    background: #fafafa;
   }
 
   .nav-link {
@@ -95,8 +87,8 @@
     left: 0;
     width: 0;
     height: 1px;
-    background: hsl(var(--accent));
-    transition: width 0.3s ease;
+    background: hsl(var(--foreground));
+    transition: width 0.25s ease;
   }
 
   .nav-link:hover::after,
@@ -117,7 +109,7 @@
 @keyframes slideUp {
   from {
     opacity: 0;
-    transform: translateY(24px);
+    transform: translateY(20px);
   }
   to {
     opacity: 1;

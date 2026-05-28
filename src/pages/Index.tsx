@@ -110,35 +110,30 @@ export default function Index() {
   };
 
   return (
-    <div className="min-h-screen bg-background font-body">
+    <div className="min-h-screen bg-white">
       {/* Navigation */}
-      <header className="border-b border-border bg-white sticky top-0 z-50 shadow-sm">
-        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-primary flex items-center justify-center">
-              <span className="text-white text-xs font-display font-bold">Р</span>
-            </div>
-            <span className="font-display font-semibold text-lg text-primary tracking-wide">
-              РусЭкзамен
-            </span>
-          </div>
+      <header className="border-b border-border bg-white sticky top-0 z-50">
+        <div className="max-w-5xl mx-auto px-8 h-14 flex items-center justify-between">
+          <span className="text-sm font-semibold tracking-tight text-foreground">
+            РусЭкзамен
+          </span>
           <nav className="flex items-center gap-8">
             <button
               onClick={() => setPage("home")}
-              className={`nav-link font-body text-sm font-medium transition-colors pb-0.5 ${
+              className={`nav-link text-sm transition-colors pb-0.5 ${
                 page === "home"
-                  ? "text-primary active"
-                  : "text-muted-foreground hover:text-primary"
+                  ? "text-foreground active"
+                  : "text-muted-foreground hover:text-foreground"
               }`}
             >
               Главная
             </button>
             <button
               onClick={() => setPage("materials")}
-              className={`nav-link font-body text-sm font-medium transition-colors pb-0.5 ${
+              className={`nav-link text-sm transition-colors pb-0.5 ${
                 page === "materials"
-                  ? "text-primary active"
-                  : "text-muted-foreground hover:text-primary"
+                  ? "text-foreground active"
+                  : "text-muted-foreground hover:text-foreground"
               }`}
             >
               Материалы
@@ -151,44 +146,38 @@ export default function Index() {
       {page === "home" && (
         <main>
           {/* Hero */}
-          <section className="bg-slate-100 py-24 relative overflow-hidden border-b border-slate-200">
-            <div className="absolute inset-0 opacity-10 pointer-events-none">
-              <div className="absolute top-4 left-8 font-display text-[200px] leading-none text-slate-400 select-none">Я</div>
-              <div className="absolute bottom-4 right-8 font-display text-[200px] leading-none text-slate-400 select-none">Ъ</div>
-            </div>
-            <div className="max-w-6xl mx-auto px-6 relative z-10">
+          <section className="py-28 border-b border-border">
+            <div className="max-w-5xl mx-auto px-8">
               <div className="max-w-2xl animate-slide-up">
-                <div className="inline-flex items-center gap-2 border border-slate-300 px-3 py-1 mb-8 text-xs tracking-widest uppercase text-slate-500 font-body">
-                  <Icon name="GraduationCap" size={12} />
-                  Подготовка к экзамену
-                </div>
-                <h1 className="font-display text-6xl font-semibold leading-tight mb-6 text-slate-800">
+                <p className="text-xs text-muted-foreground tracking-widest uppercase mb-8">
+                  Подготовка к ЕГЭ и ОГЭ
+                </p>
+                <h1 className="text-6xl font-semibold leading-[1.1] tracking-tight mb-6 text-foreground">
                   Русский язык.<br />
-                  <span className="text-slate-500">Чёткие правила.</span>
+                  <span className="text-muted-foreground font-normal">Чёткие правила.</span>
                 </h1>
-                <p className="font-body text-slate-600 text-lg leading-relaxed mb-10 font-light">
-                  Подробные объяснения правил орфографии, пунктуации и грамматики.
-                  Всё необходимое для уверенной подготовки к ЕГЭ и ОГЭ.
+                <p className="text-muted-foreground text-lg leading-relaxed mb-10 max-w-lg">
+                  Подробные объяснения правил орфографии, пунктуации и грамматики — всё необходимое для уверенной сдачи экзамена.
                 </p>
                 <button
                   onClick={() => setPage("materials")}
-                  className="inline-flex items-center gap-3 bg-slate-600 text-white px-8 py-3.5 font-body font-medium text-sm tracking-wide hover:bg-slate-700 transition-colors"
+                  className="inline-flex items-center gap-3 bg-foreground text-background px-7 py-3 text-sm font-medium hover:opacity-80 transition-opacity"
                 >
                   Перейти к материалам
-                  <Icon name="ArrowRight" size={16} />
+                  <Icon name="ArrowRight" size={15} />
                 </button>
               </div>
             </div>
           </section>
 
           {/* Stats */}
-          <section className="border-b border-border bg-white">
-            <div className="max-w-6xl mx-auto px-6">
+          <section className="border-b border-border">
+            <div className="max-w-5xl mx-auto px-8">
               <div className="grid grid-cols-2 md:grid-cols-4 divide-x divide-border">
                 {stats.map((s) => (
-                  <div key={s.label} className="py-8 px-6 text-center">
-                    <div className="font-display text-4xl font-bold text-primary mb-1">{s.value}</div>
-                    <div className="font-body text-xs text-muted-foreground uppercase tracking-widest">{s.label}</div>
+                  <div key={s.label} className="py-10 px-8 text-center">
+                    <div className="text-3xl font-semibold text-foreground mb-1">{s.value}</div>
+                    <div className="text-xs text-muted-foreground uppercase tracking-widest">{s.label}</div>
                   </div>
                 ))}
               </div>
@@ -196,53 +185,57 @@ export default function Index() {
           </section>
 
           {/* About */}
-          <section className="py-20 max-w-6xl mx-auto px-6">
-            <div className="grid md:grid-cols-2 gap-16 items-center">
-              <div>
-                <p className="text-xs font-body uppercase tracking-widest text-muted-foreground mb-4">О портале</p>
-                <h2 className="font-display text-4xl font-semibold text-primary leading-tight mb-6">
-                  Структурированные знания для сдачи экзамена
-                </h2>
-                <p className="font-body text-muted-foreground leading-relaxed mb-6">
-                  Каждое правило подкреплено подробным объяснением, примерами и исключениями.
-                  Никакой воды — только то, что действительно нужно знать.
-                </p>
-                <p className="font-body text-muted-foreground leading-relaxed">
-                  Материалы охватывают орфографию, пунктуацию, грамматику и стилистику —
-                  все темы, которые проверяются на ЕГЭ и ОГЭ.
-                </p>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                {rulesData.map((cat) => (
-                  <div
-                    key={cat.id}
-                    onClick={() => { setPage("materials"); setActiveCategory(cat.id); }}
-                    className={`${cat.color} text-white p-6 cursor-pointer hover:-translate-y-1 transition-transform duration-200 group`}
-                  >
-                    <Icon name={cat.icon} fallback="BookOpen" size={24} className="mb-4 opacity-70 group-hover:opacity-100 transition-opacity" />
-                    <div className="font-display text-lg font-medium">{cat.category}</div>
-                    <div className="font-body text-xs text-white/50 mt-1">{cat.topics.length} темы</div>
-                  </div>
-                ))}
+          <section className="py-24 border-b border-border">
+            <div className="max-w-5xl mx-auto px-8">
+              <div className="grid md:grid-cols-2 gap-20 items-start">
+                <div>
+                  <p className="text-xs uppercase tracking-widest text-muted-foreground mb-5">О портале</p>
+                  <h2 className="text-3xl font-semibold text-foreground leading-tight mb-6">
+                    Структурированные знания для сдачи экзамена
+                  </h2>
+                  <p className="text-muted-foreground leading-relaxed mb-4 text-[15px]">
+                    Каждое правило подкреплено подробным объяснением, примерами и исключениями.
+                    Никакой воды — только то, что действительно нужно знать.
+                  </p>
+                  <p className="text-muted-foreground leading-relaxed text-[15px]">
+                    Материалы охватывают орфографию, пунктуацию, грамматику и стилистику —
+                    все темы, которые проверяются на ЕГЭ и ОГЭ.
+                  </p>
+                </div>
+                <div className="grid grid-cols-2 gap-px bg-border border border-border">
+                  {rulesData.map((cat) => (
+                    <div
+                      key={cat.id}
+                      onClick={() => { setPage("materials"); setActiveCategory(cat.id); }}
+                      className="bg-white p-6 cursor-pointer hover:bg-secondary transition-colors group"
+                    >
+                      <Icon name={cat.icon} fallback="BookOpen" size={20} className="mb-4 text-muted-foreground group-hover:text-foreground transition-colors" />
+                      <div className="text-sm font-semibold text-foreground">{cat.category}</div>
+                      <div className="text-xs text-muted-foreground mt-1">{cat.topics.length} темы</div>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
           </section>
 
           {/* CTA */}
-          <section className="bg-secondary py-16 border-t border-border">
-            <div className="max-w-6xl mx-auto px-6 text-center">
-              <h2 className="font-display text-3xl font-semibold text-primary mb-4">
-                Готов начать подготовку?
-              </h2>
-              <p className="font-body text-muted-foreground mb-8">
-                Все материалы доступны бесплатно и без регистрации.
-              </p>
+          <section className="py-20">
+            <div className="max-w-5xl mx-auto px-8 flex flex-col md:flex-row items-center justify-between gap-8">
+              <div>
+                <h2 className="text-2xl font-semibold text-foreground mb-2">
+                  Готов начать подготовку?
+                </h2>
+                <p className="text-muted-foreground text-[15px]">
+                  Все материалы доступны бесплатно и без регистрации.
+                </p>
+              </div>
               <button
                 onClick={() => setPage("materials")}
-                className="inline-flex items-center gap-3 bg-primary text-primary-foreground px-8 py-3.5 font-body font-medium text-sm tracking-wide hover:opacity-90 transition-opacity"
+                className="flex-shrink-0 inline-flex items-center gap-3 border border-foreground text-foreground px-7 py-3 text-sm font-medium hover:bg-foreground hover:text-background transition-colors"
               >
                 Открыть материалы
-                <Icon name="BookOpen" size={16} />
+                <Icon name="ArrowRight" size={15} />
               </button>
             </div>
           </section>
@@ -251,20 +244,20 @@ export default function Index() {
 
       {/* MATERIALS PAGE */}
       {page === "materials" && (
-        <main className="max-w-6xl mx-auto px-6 py-12">
-          <div className="mb-10">
-            <p className="text-xs font-body uppercase tracking-widest text-muted-foreground mb-2">Учебные материалы</p>
-            <h1 className="font-display text-5xl font-semibold text-primary">Правила и грамматика</h1>
+        <main className="max-w-5xl mx-auto px-8 py-16">
+          <div className="mb-12 border-b border-border pb-8">
+            <p className="text-xs uppercase tracking-widest text-muted-foreground mb-3">Учебные материалы</p>
+            <h1 className="text-5xl font-semibold text-foreground tracking-tight">Правила и грамматика</h1>
           </div>
 
           {/* Category tabs */}
-          <div className="flex flex-wrap gap-2 mb-10 border-b border-border pb-6">
+          <div className="flex flex-wrap gap-2 mb-12">
             <button
               onClick={() => setActiveCategory(null)}
-              className={`px-4 py-2 text-sm font-body font-medium transition-colors ${
+              className={`px-4 py-1.5 text-sm font-medium border transition-colors ${
                 activeCategory === null
-                  ? "bg-primary text-primary-foreground"
-                  : "bg-secondary text-secondary-foreground hover:bg-muted"
+                  ? "border-foreground bg-foreground text-background"
+                  : "border-border text-muted-foreground hover:border-foreground hover:text-foreground"
               }`}
             >
               Все разделы
@@ -273,30 +266,27 @@ export default function Index() {
               <button
                 key={cat.id}
                 onClick={() => setActiveCategory(activeCategory === cat.id ? null : cat.id)}
-                className={`px-4 py-2 text-sm font-body font-medium transition-colors flex items-center gap-2 ${
+                className={`px-4 py-1.5 text-sm font-medium border transition-colors flex items-center gap-2 ${
                   activeCategory === cat.id
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-secondary text-secondary-foreground hover:bg-muted"
+                    ? "border-foreground bg-foreground text-background"
+                    : "border-border text-muted-foreground hover:border-foreground hover:text-foreground"
                 }`}
               >
-                <Icon name={cat.icon} fallback="BookOpen" size={14} />
+                <Icon name={cat.icon} fallback="BookOpen" size={13} />
                 {cat.category}
               </button>
             ))}
           </div>
 
           {/* Rules list */}
-          <div className="space-y-12">
+          <div className="space-y-14">
             {rulesData
               .filter((cat) => activeCategory === null || cat.id === activeCategory)
               .map((cat) => (
                 <div key={cat.id}>
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className={`${cat.color} w-8 h-8 flex items-center justify-center`}>
-                      <Icon name={cat.icon} fallback="BookOpen" size={16} className="text-white" />
-                    </div>
-                    <h2 className="font-display text-2xl font-semibold text-primary">{cat.category}</h2>
-                    <div className="flex-1 h-px bg-border ml-2" />
+                  <div className="flex items-center gap-4 mb-5">
+                    <h2 className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">{cat.category}</h2>
+                    <div className="flex-1 h-px bg-border" />
                   </div>
 
                   <div className="space-y-3">
@@ -313,17 +303,17 @@ export default function Index() {
                             className="w-full flex items-center justify-between px-6 py-5 text-left group"
                           >
                             <div>
-                              <div className="font-body font-medium text-foreground group-hover:text-primary transition-colors">
+                              <div className="text-sm font-medium text-foreground">
                                 {topic.title}
                               </div>
                               {!isOpen && (
-                                <div className="font-body text-sm text-muted-foreground mt-1">
+                                <div className="text-sm text-muted-foreground mt-0.5">
                                   {topic.short}
                                 </div>
                               )}
                             </div>
                             <div className={`ml-4 flex-shrink-0 text-muted-foreground transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}>
-                              <Icon name="ChevronDown" size={18} />
+                              <Icon name="ChevronDown" size={16} />
                             </div>
                           </button>
 
@@ -331,25 +321,25 @@ export default function Index() {
                             <div className="px-6 pb-6 border-t border-border">
                               <div className="pt-5">
                                 {topic.full.split("\n\n").map((block, bi) => (
-                                  <div key={bi} className="mb-4">
+                                  <div key={bi} className="mb-5">
                                     {block.split("\n").map((line, li) => {
                                       if (line.startsWith("•")) {
                                         return (
-                                          <div key={li} className="flex items-start gap-2 mb-1.5 font-body text-sm text-foreground">
-                                            <span className="text-amber-500 mt-0.5 flex-shrink-0">—</span>
+                                          <div key={li} className="flex items-start gap-2.5 mb-1.5 text-sm text-foreground">
+                                            <span className="text-muted-foreground mt-0.5 flex-shrink-0">—</span>
                                             <span>{line.slice(1).trim()}</span>
                                           </div>
                                         );
                                       }
                                       if (/^\d+\./.test(line)) {
                                         return (
-                                          <div key={li} className="font-body text-sm font-medium text-primary mb-2 mt-3">
+                                          <div key={li} className="text-sm font-semibold text-foreground mb-2 mt-4">
                                             {line}
                                           </div>
                                         );
                                       }
                                       return (
-                                        <div key={li} className="font-body text-sm text-muted-foreground mb-1 leading-relaxed">
+                                        <div key={li} className="text-sm text-muted-foreground mb-1 leading-relaxed">
                                           {line}
                                         </div>
                                       );
@@ -370,21 +360,13 @@ export default function Index() {
       )}
 
       {/* Footer */}
-      <footer className="border-t border-border bg-white mt-16">
-        <div className="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <div className="w-6 h-6 bg-primary flex items-center justify-center">
-              <span className="text-white text-xs font-display font-bold">Р</span>
-            </div>
-            <span className="font-display text-primary font-semibold">РусЭкзамен</span>
-          </div>
-          <p className="font-body text-xs text-muted-foreground text-center">
+      <footer className="border-t border-border mt-16">
+        <div className="max-w-5xl mx-auto px-8 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
+          <span className="text-sm font-semibold text-foreground">РусЭкзамен</span>
+          <p className="text-xs text-muted-foreground text-center">
             Портал для подготовки к ЕГЭ и ОГЭ по русскому языку
           </p>
-          <div className="flex items-center gap-1 text-muted-foreground">
-            <Icon name="BookOpen" size={14} />
-            <span className="font-body text-xs">Все материалы</span>
-          </div>
+          <span className="text-xs text-muted-foreground">Все материалы бесплатны</span>
         </div>
       </footer>
     </div>
